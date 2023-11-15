@@ -32,7 +32,7 @@ except FileNotFoundError:
 # Function to check if student is already enrolled in a course
 def is_student_enrolled(first_name, last_name, course):
     for student in students:
-        if student['First Name'] == first_name and student['Last Name'] == last_name and student['Course'] == course:
+        if student['FirstName'] == first_name and student['LastName'] == last_name and student['CourseName'] == course:
             return True
     return False
 
@@ -49,13 +49,13 @@ while True:
         if is_student_enrolled(first_name, last_name, course):
             print(f"Student {first_name} {last_name} is already enrolled in {course}. Please try again.")
         else:
-            students.append({'First Name': first_name, 'Last Name': last_name, 'Course': course})
+            students.append({'FirstName': first_name, 'LastName': last_name, 'CourseName': course})
             print(f"You have registered {first_name} {last_name} for {course}.")
 
     elif menu_choice == "2":
         print("-" * 50)
         for student in students:
-            print(f"Student {student['First Name']} {student['Last Name']} is enrolled in {student['Course']}")
+            print(f"Student {student['FirstName']} {student['LastName']} is enrolled in {student['CourseName']}")
         print("-" * 50)
 
     elif menu_choice == "3":
@@ -64,7 +64,7 @@ while True:
                 json.dump(students, file)
             print("The following data was saved to files!")
             for student in students:
-                print(f"Student {student['First Name']} {student['Last Name']} is enrolled in {student['Course']}")
+                print(f"Student {student['FirstName']} {student['LastName']} is enrolled in {student['CourseName']}")
         except Exception as e:
             print(f"An error occurred while writing to the file: {e}")
 
